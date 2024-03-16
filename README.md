@@ -1,1 +1,1 @@
-# Raze
+# My QG AI
