@@ -4,23 +4,23 @@
 #include <Windows.h>
 #include "LinkedList.h"
 
-//¶¨ÒåÈ«¾Ö±äÁ¿n£¬ÓÃÀ´¼ÇÂ¼½Úµã¸öÊı
+//å®šä¹‰å…¨å±€å˜é‡nï¼Œç”¨æ¥è®°å½•èŠ‚ç‚¹ä¸ªæ•°
 int n;
 
-//¶¨ÒåÏÔÊ¾Ö÷²Ëµ¥µÄº¯Êı
+//å®šä¹‰æ˜¾ç¤ºä¸»èœå•çš„å‡½æ•°
 void DisplayMainMenu()
 {
-	//Êä³ö±ß½çÏß
+	//è¾“å‡ºè¾¹ç•Œçº¿
 	printf("\n======================\n");
 
-	//Êä³öÖ÷Ìå
+	//è¾“å‡ºä¸»ä½“
 	for (int i = 0; i < 12; i++)
 		printf("%s\n", MainMenu[i]);
 
 	printf("======================\n");
 }
 
-//¶¨Òå´´½¨Á´±íµÄº¯Êı
+//å®šä¹‰åˆ›å»ºé“¾è¡¨çš„å‡½æ•°
 struct Node* CreateNode()
 {
 	struct Node* head, * p1, * p2;
@@ -28,13 +28,13 @@ struct Node* CreateNode()
 	head = NULL;
 	p1 = (struct Node*)malloc(LEN);
 	p2 = p1;
-	printf("ÇëÊäÈëµÚ1¸öÊı¾İ£¨ÈôÊäÈë0Ôò½áÊø£©£º");
+	printf("è¯·è¾“å…¥ç¬¬1ä¸ªæ•°æ®ï¼ˆè‹¥è¾“å…¥0åˆ™ç»“æŸï¼‰ï¼š");
 	scanf("%d", &p1->data);
 	while (p1->data != 0)
 	{
 		n++;
 		if (n == 1)
-			//ÊÇµÚÒ»¸ö£¿
+			//æ˜¯ç¬¬ä¸€ä¸ªï¼Ÿ
 			head = p1;
 
 		else
@@ -42,26 +42,26 @@ struct Node* CreateNode()
 
 		p2 = p1;
 		p1 = (struct Node*)malloc(LEN);
-		printf("ÇëÊäÈëµÚ%d¸öÊı¾İ£¨ÈôÊäÈë0Ôò½áÊø£©£º", n + 1);
+		printf("è¯·è¾“å…¥ç¬¬%dä¸ªæ•°æ®ï¼ˆè‹¥è¾“å…¥0åˆ™ç»“æŸï¼‰ï¼š", n + 1);
 		scanf("%d", &p1->data);
 	}
 	p2->next = NULL;
 	return(head);
 }
 
-//¶¨Òå²åÈë½ÚµãµÄº¯Êı
+//å®šä¹‰æ’å…¥èŠ‚ç‚¹çš„å‡½æ•°
 struct Node* InsertNode(struct Node* head)
 {
 	struct Node* p1, * p3 = (struct Node*)malloc(LEN);
 	int where;
 
-	//ÅĞ¶Ïµ±Ç°ÊÇ·ñÓĞÁ´±í
+	//åˆ¤æ–­å½“å‰æ˜¯å¦æœ‰é“¾è¡¨
 	if (head == NULL)
 	{
-		printf("µ±Ç°ÎŞÁ´±í£¡\n");
+		printf("å½“å‰æ— é“¾è¡¨ï¼\n");
 		return NULL;
 	}
-	printf("ÇëÊäÈëÄúÏë²åÈëÔÚÄÄ¸öÊı¾İºó£º");
+	printf("è¯·è¾“å…¥æ‚¨æƒ³æ’å…¥åœ¨å“ªä¸ªæ•°æ®åï¼š");
 	scanf("%d", &where);
 	p1 = head;
 	while (p1->data != where && p1->next != NULL)
@@ -69,15 +69,15 @@ struct Node* InsertNode(struct Node* head)
 
 	if (p1->data == where)
 	{
-		printf("ÇëÊäÈëÄúÏë²åÈëµÄÊı×Ö£º");
+		printf("è¯·è¾“å…¥æ‚¨æƒ³æ’å…¥çš„æ•°å­—ï¼š");
 		scanf("%d", &p3->data);
-		//ÔÚ±íÍ·»ò±íÖĞ
+		//åœ¨è¡¨å¤´æˆ–è¡¨ä¸­
 		if (p1->next != NULL)
 		{
 			p3->next = p1->next;
 			head->next = p3;
 		}
-		//ÔÚ±íÎ²
+		//åœ¨è¡¨å°¾
 		else
 		{
 			p1->next = p3;
@@ -85,63 +85,63 @@ struct Node* InsertNode(struct Node* head)
 		}
 	}
 	else
-		printf("²éÎŞ´Ë½Úµã£¡\n");
+		printf("æŸ¥æ— æ­¤èŠ‚ç‚¹ï¼\n");
 	return head;
 }
 
-//¶¨Òåµİ¹é·´×ªÁ´±íµÄº¯Êı
+//å®šä¹‰é€’å½’åè½¬é“¾è¡¨çš„å‡½æ•°
 struct Node* Reverse1(struct Node* head)
 {
 	if (head == NULL)
 	{
-		printf("µ±Ç°ÎŞÁ´±í£¡\n");
+		printf("å½“å‰æ— é“¾è¡¨ï¼\n");
 		return head;
 	}
 
 	if (head->next == NULL)
 		return(head);
 
-	//µİ¹é·´×ªheadºóµÄÁ´±í
+	//é€’å½’åè½¬headåçš„é“¾è¡¨
 	struct Node* last = Reverse1(head->next);
 
-	//ÔÚhead´¦×ö×îºóµÄ²Ù×÷
+	//åœ¨headå¤„åšæœ€åçš„æ“ä½œ
 	head->next->next = head;
 	head->next = NULL;
-	printf("Á´±í·´×ª³É¹¦£¡\n");
+	printf("é“¾è¡¨åè½¬æˆåŠŸï¼\n");
 	return last;
 }
 
-//¶¨ÒåÊä³öÁ´±íµÄº¯Êı
+//å®šä¹‰è¾“å‡ºé“¾è¡¨çš„å‡½æ•°
 void PrintList(struct Node* head)
 {
 	n = 0;
 	struct Node* p = head;
 	if (p == NULL)
 	{
-		printf("µ±Ç°ÎŞÁ´±í£¡\n");
+		printf("å½“å‰æ— é“¾è¡¨ï¼\n");
 		return;
 	}
 	for (; p != NULL;)
 	{
 		n++;
-		printf("µÚ%d¸ö½ÚµãÊı¾İÊÇ%d\n", n, p->data);
+		printf("ç¬¬%dä¸ªèŠ‚ç‚¹æ•°æ®æ˜¯%d\n", n, p->data);
 		p = p->next;
 	}
 	printf("\n");
 }
 
-//¶¨ÒåÑ°ÕÒÁ´±íÖĞµãµÄº¯Êı
+//å®šä¹‰å¯»æ‰¾é“¾è¡¨ä¸­ç‚¹çš„å‡½æ•°
 struct Node* MidNode(struct Node* head)
 {
 	if (head == NULL)
 	{
-		printf("µ±Ç°ÎŞÁ´±í£¡\n");
+		printf("å½“å‰æ— é“¾è¡¨ï¼\n");
 		return NULL;
 	}
 
 	if (head->next == NULL)
 	{
-		printf("µ±Ç°Á´±íÖ»ÓĞÒ»¸ö½Úµã£¡\n");
+		printf("å½“å‰é“¾è¡¨åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹ï¼\n");
 		return NULL;
 	}
 
@@ -159,36 +159,36 @@ struct Node* MidNode(struct Node* head)
 		{
 			if (fast->next == NULL)
 			{
-				printf("¸ÃÁ´±í¸öÊıÊÇÅ¼Êı£¬Ã»ÓĞÖĞµã£¡\n");
+				printf("è¯¥é“¾è¡¨ä¸ªæ•°æ˜¯å¶æ•°ï¼Œæ²¡æœ‰ä¸­ç‚¹ï¼\n");
 				return NULL;
 			}
 			else 
 			{
-				printf("¸ÃÁ´±íÓĞÖĞµã£¡\n");
+				printf("è¯¥é“¾è¡¨æœ‰ä¸­ç‚¹ï¼\n");
 				return slow;
 			}
 		}
 	}
 }
 
-//¶¨ÒåÅĞ¶ÏÁ´±íÊÇ·ñ³É»·µÄº¯Êı
+//å®šä¹‰åˆ¤æ–­é“¾è¡¨æ˜¯å¦æˆç¯çš„å‡½æ•°
 void JudgeCircleNode(struct Node* head)
 {
 	if (head == NULL)
 	{
-		printf("µ±Ç°ÎŞÁ´±í£¡\n");
+		printf("å½“å‰æ— é“¾è¡¨ï¼\n");
 		return NULL;
 	}
 
 	if (head->next == NULL)
 	{
-		printf("µ±Ç°Á´±íÖ»ÓĞÒ»¸ö½Úµã£¬ÎŞ·¨³É»·\n");
+		printf("å½“å‰é“¾è¡¨åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹ï¼Œæ— æ³•æˆç¯\n");
 		return NULL;
 	}
 
 	if (head->next != NULL && head->next->next == NULL)
 	{
-		printf("µ±Ç°Á´±íÖ»ÓĞÁ½¸ö½Úµã£¬ÎŞ·¨³É»·\n");
+		printf("å½“å‰é“¾è¡¨åªæœ‰ä¸¤ä¸ªèŠ‚ç‚¹ï¼Œæ— æ³•æˆç¯\n");
 		return NULL;
 	}
 
@@ -201,27 +201,27 @@ void JudgeCircleNode(struct Node* head)
 		slow = slow->next;
 		if (slow == fast)
 		{
-			printf("¸Ãµ¥Á´±í³É»·£¡\n");
+			printf("è¯¥å•é“¾è¡¨æˆç¯ï¼\n");
 			return NULL;
 		}
 	}
-	printf("¸Ãµ¥Á´±í²»³É»·£¡\n");
+	printf("è¯¥å•é“¾è¡¨ä¸æˆç¯ï¼\n");
 }
 
-//¶¨ÒåÉ¾³ı½ÚµãµÄº¯Êı
+//å®šä¹‰åˆ é™¤èŠ‚ç‚¹çš„å‡½æ•°
 struct Node* DeleteNode(struct Node* head)
 {
 	struct Node* p1, * p2;
 	int where;
-	//ÅĞ¶Ïµ±Ç°ÊÇ·ñÓĞÁ´±í
+	//åˆ¤æ–­å½“å‰æ˜¯å¦æœ‰é“¾è¡¨
 	if (head == NULL)
 	{
-		printf("µ±Ç°ÎŞÁ´±í£¡\n");
+		printf("å½“å‰æ— é“¾è¡¨ï¼\n");
 		return NULL;
 	}
 	p1 = head;
 	p2 = NULL;
-	printf("ÇëÊäÈëÄúÏëÉ¾³ıµÄÊı¾İ£º");
+	printf("è¯·è¾“å…¥æ‚¨æƒ³åˆ é™¤çš„æ•°æ®ï¼š");
 	scanf("%d", &where);
 	while (p1->data != where && p1->next != NULL)
 	{
@@ -230,63 +230,84 @@ struct Node* DeleteNode(struct Node* head)
 	}
 	if (p1->data == where)
 	{
-		//¾ÍÔÚÁ´±íÍ·
+		//å°±åœ¨é“¾è¡¨å¤´
 		if (p1 == head)
 			head = p1->next;
-		//ÔÚÁ´±íÖĞ»ò±íÎ²
+		//åœ¨é“¾è¡¨ä¸­æˆ–è¡¨å°¾
 		else
 			p2->next = p1->next;
 	}
 	else
-		printf("²éÎŞ´Ë½Úµã£¡\n");
+		printf("æŸ¥æ— æ­¤èŠ‚ç‚¹ï¼\n");
 	return head;
 }
 
-//¶¨ÒåÆæÅ¼·´×ªµÄº¯Êı
+//å®šä¹‰å¥‡å¶åè½¬çš„å‡½æ•°
 struct Node* SDReverseNode(struct Node* head)
 {
 	if (head == NULL)
 	{
-		printf("µ±Ç°ÎŞÁ´±í£¡\n");
+		printf("å½“å‰æ— é“¾è¡¨ï¼\n");
 		return head;
 	}
 
 	if (head->next == NULL)
 		return(head);
 
-	struct Node* p1, * p2, * temp, * newhead;
+	struct Node* p1, * p2, * temp1, * temp2, * newhead;
+	//åˆå§‹åŒ–
 	p1 = head;
 	p2 = head->next;
 	newhead = p2;
+	temp1 = p2->next;
 
+	//åœ¨è¡¨å¤´çš„æ“ä½œ
+	p2->next = p1;
+	p1->next = temp1;
+	temp2 = p1;
+	p1 = p1->next;
+	p2 = p1->next;
+	temp1 = p2->next;
+
+	//åœ¨è¡¨ä¸­çš„æ“ä½œ
 	while (p1 != NULL && p2 != NULL)
 	{
-		temp = p2->next;
 		p2->next = p1;
-		p1->next = temp;
+		p1->next = temp1;
+		temp2->next = p2;
+		temp2 = p1;
 		p1 = p1->next;
-		p2 = p1->next;
+		if (p1 != NULL)
+		{
+			p2 = p1->next;
+			if (p2 != NULL)
+				temp1 = p2->next;
+			else
+				break;
+		}
+		else
+			break;
 	}
 
-	return head;
+	return newhead;
 }
 
-//¶¨Òå²éÕÒ½ÚµãµÄº¯Êı
+//å®šä¹‰æŸ¥æ‰¾èŠ‚ç‚¹çš„å‡½æ•°
 void SearchNode(struct Node* head)
 {
-	//ÅĞ¶Ïµ±Ç°ÊÇ·ñÓĞÁ´±í
+	//åˆ¤æ–­å½“å‰æ˜¯å¦æœ‰é“¾è¡¨
 	if (head == NULL)
 	{
-		printf("µ±Ç°ÎŞÁ´±í£¡\n");
+		printf("å½“å‰æ— é“¾è¡¨ï¼\n");
 		return NULL;
 	}
-	//nÓÃÓÚ¼ÇÂ¼Êı¾İÎ»ÖÃ
+	//nç”¨äºè®°å½•æ•°æ®ä½ç½®
 	n = 1;
 	int number;
 	struct Node* p1, * p2;
 	p1 = head;
 	p2 = NULL;
-	printf("ÇëÊäÈëÄúÏë²éÕÒµÄÊı¾İ£º");
+	printf("è¯·è¾“å…¥æ‚¨æƒ³æŸ¥æ‰¾çš„æ•°æ®ï¼š");
 	scanf("%d", &number);
 	while (p1->data != number && p1->next != NULL)
 	{
@@ -295,12 +316,12 @@ void SearchNode(struct Node* head)
 		n++;
 	}
 	if (p1->data == number)
-		printf("¸ÃÊı¾İÔÚµÚ%d¸ö½Úµã\n", n);
+		printf("è¯¥æ•°æ®åœ¨ç¬¬%dä¸ªèŠ‚ç‚¹\n", n);
 	else
-		printf("²éÎŞ´Ë½Úµã£¡\n");
+		printf("æŸ¥æ— æ­¤èŠ‚ç‚¹ï¼\n");
 }
 
-//¶¨Òå´´½¨Ñ­»·Á´±íµÄº¯Êı
+//å®šä¹‰åˆ›å»ºå¾ªç¯é“¾è¡¨çš„å‡½æ•°
 struct Node* CreateCircle()
 {
 	struct Node* head, * p1, * p2;
@@ -308,13 +329,13 @@ struct Node* CreateCircle()
 	head = NULL;
 	p1 = (struct Node*)malloc(LEN);
 	p2 = p1;
-	printf("ÇëÊäÈëµÚ1¸öÊı¾İ£¨ÈôÊäÈë0Ôò½áÊø£©£º");
+	printf("è¯·è¾“å…¥ç¬¬1ä¸ªæ•°æ®ï¼ˆè‹¥è¾“å…¥0åˆ™ç»“æŸï¼‰ï¼š");
 	scanf("%d", &p1->data);
 	while (p1->data != 0)
 	{
 		n++;
 		if (n == 1)
-			//ÊÇµÚÒ»¸ö£¿
+			//æ˜¯ç¬¬ä¸€ä¸ªï¼Ÿ
 			head = p1;
 
 		else
@@ -322,19 +343,19 @@ struct Node* CreateCircle()
 
 		p2 = p1;
 		p1 = (struct Node*)malloc(LEN);
-		printf("ÇëÊäÈëµÚ%d¸öÊı¾İ£¨ÈôÊäÈë0Ôò½áÊø£©£º", n + 1);
+		printf("è¯·è¾“å…¥ç¬¬%dä¸ªæ•°æ®ï¼ˆè‹¥è¾“å…¥0åˆ™ç»“æŸï¼‰ï¼š", n + 1);
 		scanf("%d", &p1->data);
 	}
 	p2->next = head;
 	return(head);
 }
 
-//¶¨Òåµü´ú·´×ªÁ´±íµÄº¯Êı
+//å®šä¹‰è¿­ä»£åè½¬é“¾è¡¨çš„å‡½æ•°
 struct Node* Reverse2(struct Node* head)
 {
 	if (head == NULL)
 	{
-		printf("µ±Ç°ÎŞÁ´±í£¡\n");
+		printf("å½“å‰æ— é“¾è¡¨ï¼\n");
 		return head;
 	}
 
@@ -353,7 +374,7 @@ struct Node* Reverse2(struct Node* head)
 		p1 = temp;
 	}
 
-	printf("Á´±í·´×ª³É¹¦£¡\n");
+	printf("é“¾è¡¨åè½¬æˆåŠŸï¼\n");
 	return(p2);
 }
 
@@ -365,73 +386,73 @@ int main()
 
 	while (1)
 	{
-		printf("ÇëÊäÈëÄúÏëÊµÏÖµÄ¹¦ÄÜ£¨ÊäÈëÊı×Ö1-12£©ºóµã»÷»Ø³µ£º");
+		printf("è¯·è¾“å…¥æ‚¨æƒ³å®ç°çš„åŠŸèƒ½ï¼ˆè¾“å…¥æ•°å­—1-12ï¼‰åç‚¹å‡»å›è½¦ï¼š");
 
 		scanf("%d", &number);
 
 		while (number < 1 || number > 12)
 		{
-			printf("ÄúÊäÈëµÄÊı×Ö²»ºÏ¹æ·¶£¬ÇëÖØĞÂÊäÈë£¡\n");
-			printf("ÇëÊäÈëÄúÏëÊµÏÖµÄ¹¦ÄÜ£¨ÊäÈëÊı×Ö1-12£©ºóµã»÷»Ø³µ£º");
+			printf("æ‚¨è¾“å…¥çš„æ•°å­—ä¸åˆè§„èŒƒï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n");
+			printf("è¯·è¾“å…¥æ‚¨æƒ³å®ç°çš„åŠŸèƒ½ï¼ˆè¾“å…¥æ•°å­—1-12ï¼‰åç‚¹å‡»å›è½¦ï¼š");
 			scanf("%d", &number);
 		}
 
 		switch (number)
 		{
 
-		//³õÊ¼»¯Á´±í
+		//åˆå§‹åŒ–é“¾è¡¨
 		case 1:
 			head = CreateNode();
 			system("cls");
 			DisplayMainMenu();
 			break;
 
-		//²åÈëĞÂ½Úµã
+		//æ’å…¥æ–°èŠ‚ç‚¹
 		case 2:
 			head = InsertNode(head);
 			break;
 
-		//µİ¹é·´×ªÁ´±í
+		//é€’å½’åè½¬é“¾è¡¨
 		case 3:
 			head = Reverse1(head);
 			break;
 
-		//Êä³öÁ´±í
+		//è¾“å‡ºé“¾è¡¨
 		case 4:
 			PrintList(head);
 			break;
 
-		//Ñ°ÕÒÁ´±íÖĞµã
+		//å¯»æ‰¾é“¾è¡¨ä¸­ç‚¹
 		case 5:
 			mid = MidNode(head);
 			break;
 
-		//ÅĞ¶Ïµ¥Á´±íÊÇ·ñ³É»·
+		//åˆ¤æ–­å•é“¾è¡¨æ˜¯å¦æˆç¯
 		case 6:
 			JudgeCircleNode(head);
 			break;
 
-		//É¾³ı½Úµã
+		//åˆ é™¤èŠ‚ç‚¹
 		case 7:
 			head = DeleteNode(head);
 			break;
 
-		//ÆæÅ¼·´×ª
+		//å¥‡å¶åè½¬
 		case 8:
 			head = SDReverseNode(head);
 			break;
 
-		//²éÑ¯Á´±í
+		//æŸ¥è¯¢é“¾è¡¨
 		case 9:
 			SearchNode(head);
 			break;
 
-		//¹¹½¨Ñ­»·Á´±í
+		//æ„å»ºå¾ªç¯é“¾è¡¨
 		case 10:
 			head = CreateCircle();
 			break;
 
-		//µü´ú·´×ªÁ´±í
+		//è¿­ä»£åè½¬é“¾è¡¨
 		case 11:
 			head = Reverse2(head);
 			break;
